@@ -1,4 +1,5 @@
-FROM ubuntu:18.04
-
-ENTRYPOINT ["top"]
-CMD ["-d", "5"]
+FROM nginx:alpine
+WORKDIR /usr/share/nginx/html
+RUN rm -rf ./*
+COPY ./* ./
+ENTRYPOINT ["nginx", "-g", "daemon off;"]
